@@ -1,5 +1,5 @@
 const loginForm = document.querySelector("#login-form");
-const loginIuput = loginForm.querySelector("input");
+const loginInput = loginForm.querySelector("input");
 const greeting = document.querySelector("h1");
 const deleteUserBtn = document.getElementById("deleteUserBtn");
 
@@ -26,7 +26,7 @@ function checkUserExist(){
 function onLoginClick(event){
     event.preventDefault();
     
-    username = loginIuput.value;
+    username = loginInput.value;
     localStorage.setItem("username", username);
 
     loginForm.classList.add(HIDDEN_CLASSNAME);
