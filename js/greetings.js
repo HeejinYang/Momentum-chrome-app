@@ -15,16 +15,14 @@ function checkUserExist(){
     }
 }
 
+// 유저 정보 받아서 localStorage에 저장하기
 function onLoginClick(event){
 
     // submit했을때 페이지가 재시작 되는것을 막는다
     event.preventDefault();
 
-    // submit되어서 이 함수가 실행되었을때 인풋에 값이 있기때문에 여기에 위치한다
-    const username = loginInput.value;
-
     //localStorage에 저장하기
-    localStorage.setItem("username", username);
+    localStorage.setItem("username", loginInput.value);
     checkUserExist();
 
 }
