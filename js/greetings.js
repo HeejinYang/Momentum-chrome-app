@@ -1,6 +1,6 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = loginForm.querySelector("input");
-const greeting = document.querySelector("h1");
+const greeting = document.querySelector("#greeting");
 
 function checkUserExist(){
     if (localStorage.getItem("username") === null){
@@ -16,7 +16,7 @@ function checkUserExist(){
 }
 
 // 유저 정보 받아서 localStorage에 저장하기
-function onLoginClick(event){
+function onLoginSubmit(event){
 
     // submit했을때 페이지가 재시작 되는것을 막는다
     event.preventDefault();
@@ -28,4 +28,4 @@ function onLoginClick(event){
 }
 
 checkUserExist();
-loginForm.addEventListener("submit", onLoginClick);
+loginForm.addEventListener("submit", onLoginSubmit);
