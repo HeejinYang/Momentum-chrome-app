@@ -9,45 +9,34 @@
 const todoForm = document.querySelector("#todo-form");
 const todoList = document.querySelector("#todo-list");
 const todoInput = todoForm.querySelector("input");
+
 let todoArray = [];
 
 const TODOS_KEY = "todosLocal";
 
 
-// 함수를 호출한 item(배열요소)에 대한 정보를 주는 매개변수 item
+// 함수를 호출한 item에 대한 정보를 주는 매개변수 item
 /* function sayHello(item){
-    // 자신을 호출한 배열 요소 자체를 알려준다
     console.log(item, " is " , typeof item);
     console.log();
 } */
-// todosLocalArray.forEach(sayHello);
-
-// 줄인 버전 (Arrow function)
-// todosLocalArray.forEach((item)=>console.log(item, " is " , typeof item));
 
 // 저장된 투두를 화면에 출력하기, 배열 아이템을 삭제했다면 삭제한후에 다시 호출하면 된다.
 function paintSavedTodo(){
-    const todosLocalRaw = localStorage.getItem(TODOS_KEY);
 
-    if(todosLocalRaw){
-        const todosLocalArray = JSON.parse(todosLocalRaw);
-        console.log(todosLocalArray);
-        // todosLocalArray.forEach((item)=>paintTodo(item));
+    if (localStorage.getItem(TODOS_KEY)){
+        const savedTodoArray = JSON.parse(localStorage.getItem(TODOS_KEY));
+        savedTodoArray.forEach(paintTodo);
 
+        // 이후에 submit했을때 값이 있는 배열에 추가할수있도록 배열을 변경한다
+        todoArray = savedTodoArray;
 
-        // 화면에 저장된 투두가 출력된후에 새로 submit했을때에 기존배열값을 유지하면서 추가할수있게 한다
-        todoArray = todosLocalArray;
-
-        // paintTodo함수에 인자로 각 배열의 요소들이 들어가며 함수를 호출한다
-        todosLocalArray.forEach(paintTodo);
-        
     } else {
-        console.log("there's nothing to paint");
+        console.log("nothing in localStorage");
     }
+    
+
 }
-
-
-
 
 // 로컬 storage에 어레이 저장
 // 배열을 넣으면 값이 저장되긴 하지만 문자열로 저장된다
@@ -55,48 +44,38 @@ function paintSavedTodo(){
 function saveTodo(){
     // JSON.stringify()를 이용해 배열 형태를 갖춘 문자열로 바꿔 저장한다
     localStorage.setItem(TODOS_KEY, JSON.stringify(todoArray));
+    
+    
 }
 
 function deleteTodo(event){
-    const li = event.target.parentElement;
-    // paintTodo에서 li에 id값 넣어줘서 li에 id값 존재한다
     
-    todoArray = todoArray.filter(item=>item.id !== parseInt(li.id));
-    saveTodo();
-    li.remove();
-    console.log("투두 삭제됨");
-    console.dir(event.target);
 }
 
-function paintTodo(newTodoObj){
+function paintTodo(newTodo){
     const li = document.createElement("li");
-    li.id = newTodoObj.id;
     const span = document.createElement("span");
-    span.innerText = newTodoObj.text;
+    span.innerText = newTodo;
+
     const button = document.createElement("button");
     button.innerText = "X";
-    button.addEventListener("click", deleteTodo);
 
     li.appendChild(span);
     li.appendChild(button);
     todoList.appendChild(li);
+
+    
 }
 
 function handleTodoSubmit(event){
-    // 엔터쳤을때 페이지가 재시작되는것을 막는다
     event.preventDefault();
 
-    // input태그 엘리먼트의 입력값을 받아오려면 innerText하는게 아니라 value의 값을 가져와야한다
-    console.log(todoInput.value);
     const newTodo = todoInput.value;
-    todoInput.value = "";
-    const newTodoObj = {
-        id:Date.now(),
-        text:newTodo,
-    };
-    todoArray.push(newTodoObj);
+    todoInput.value="";
+
+    todoArray.push(newTodo);
     saveTodo();
-    paintTodo(newTodoObj);
+    paintTodo(newTodo);
 
 }
 
