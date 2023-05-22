@@ -1,7 +1,7 @@
 function onGeoSuccess(position){
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    const API_KEY = "";
+    const API_KEY = "dcd394454ba1347fd35a2756b69834e1";
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
     // 자바스크립트가 직접 url을 부른다
