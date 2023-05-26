@@ -25,6 +25,11 @@ const colors = [
     const firstColor = colors[Math.floor(Math.random() * colors.length)];
     const secondColor = colors[Math.floor(Math.random() * colors.length)];
     document.body.style.background = `linear-gradient(to left, ${firstColor},${secondColor}`;
+
+    // 재귀함수 이용해서 색상이 겹쳤을때 다시 뽑도록 한다.
+    if( firstColor===secondColor){
+      return changeColor();
+    }
   }
   
   changeColor();

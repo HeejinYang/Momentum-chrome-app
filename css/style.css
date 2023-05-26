@@ -1,3 +1,29 @@
 .hidden {
     display:none;
 }
+
+body{
+    margin-top:200px;
+    color: white;
+    text-align: center;
+    background-size: cover;
+}
+
+#clock{
+    font-size:100px;
+}
+
+#quoteAndTodo{
+    margin-top:80px;
+}
+#todo-form{
+    margin-top:50px;
+}
+#todo-list{
+    list-style: none;
+    margin-right:10px;
+}
+
+#todo-list button{
+    margin-left:10px;
+}

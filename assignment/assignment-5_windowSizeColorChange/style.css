@@ -1,0 +1,16 @@
+body {
+    color: white;
+}
+
+.small {
+    background-color:skyblue;
+
+}
+
+.medium {
+    background-color: purple;
+}
+
+.large {
+    background-color: yellow;
+}

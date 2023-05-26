@@ -18,6 +18,6 @@ const bgImage = document.createElement("img");
 // 이미지 엘리먼트객체의 src속성에 값을 넣는다
 bgImage.src = `img/${chosenImage}`;
 
-document.body.appendChild(bgImage);
+document.body.style.backgroundImage=`url(img/${chosenImage})`;
 
 

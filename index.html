@@ -12,28 +12,26 @@
         <input required maxlength="15" type="text", placeholder="What is your name?"/><br>
         <button>log in</button>
     </form>
-    <h2 id="clock">00:00:00</h2>
+    <p id="clock">00:00:00</p>
     <h1 id="greeting" class="hidden"></h1>
-
-    <form id="todo-form">
-        <input type="text" placeholder="Write a To Do and Press Enter" required>
-    </form>
-    <ul id="todo-list"></ul>
-
-
-    <div id="quote">
-        <span></span><br><br>
-        <span></span>
-    </div>
-
-    <br>
-    
     <div id="weather">
         <span></span>
         <span></span>
         <span></span>
     </div>
 
+    <div id="quoteAndTodo">
+    <div id="quote">
+        <span></span><br><br>
+        <span></span>
+    </div>
+    <hr style="border:1px color= silver;" width="30%">
+    <form id="todo-form">
+        <h2>Todo List</h2>
+        <input type="text" placeholder="Write a To Do and Press Enter" required>
+    </form>
+    <ul id="todo-list"></ul>
+    </div>
     
 
     <script src="js/greetings.js" defer></script>
